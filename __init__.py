@@ -2,9 +2,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Flask app running on Vercel!"
+app.config.from_object("config.DevelopmentConfig")
 
-def handler(request, context):
-    return app(request.environ, lambda status, headers: None)
+from app import views
